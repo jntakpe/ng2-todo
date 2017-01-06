@@ -10,17 +10,17 @@
       <input type="checkbox" id="toggle-all"> <!-- Sélectionne toutes les tâches comme finies -->
       <label for="toggle-all">Tâches finies</label>
       <ul id="todo-list">
-        <li> <!-- Liste des tâches --> <!-- Si tâche finie appliquer sur li class 'completed' -->
+        <li *ngFor="let task of tasks" [class.completed]="task.completed">
           <div class="view">
-            <label for="task">Tâche</label>
-            <input id="task" type="checkbox" class="toggle"/> <!-- Switch pour passer la tâche au statut finie -->
+            <label for="task">{{task.label}}</label>
+            <input id="task" type="checkbox" class="toggle" [checked]="task.complete" (click)="toggleComplete(task)"/>
             <button class="destroy"></button> <!-- Bouton permettant de supprimer une tâche -->
           </div>
         </li>
       </ul>
     </section>
     <footer id="footer">
-      <span id="todo-count"><strong>{{nbTasks}} tâches restantes</strong></span>
+      <span id="todo-count"><strong>{{remainingTasks}} tâches restantes</strong></span>
     </footer>
   </header>
 </section>
