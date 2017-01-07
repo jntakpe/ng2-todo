@@ -21,8 +21,16 @@ export class AppComponent {
     completed: false
   }];
 
-  toggleComplete(task: Task) {
+  toggleComplete(task: Task): void {
     task.completed = !task.completed;
+  }
+
+  removeTask(task: Task): void {
+    this.tasks.splice(this.tasks.indexOf(task), 1);
+  }
+
+  addTask(label: string): void {
+    this.tasks.push({label, completed: false});
   }
 
 }

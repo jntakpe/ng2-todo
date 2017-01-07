@@ -2,9 +2,9 @@
   <header id="header">
     <h1>Todo APP</h1>
 
-    <form id="todo-form"> <!-- cliquer sur entrée pour ajouter une tâche -->
-      <input type="text" id="new-todo" placeholder="Ajouter une tâche" autocomplete="off" autofocus/>
-      <!-- input avec le contenu de la tâche -->
+    <form id="todo-form">
+      <input type="text" id="new-todo" placeholder="Ajouter une tâche" autocomplete="off" autofocus #newTask
+             (keyup.enter)="addTask(newTask.value)"/>
     </form>
     <section id="main">
       <input type="checkbox" id="toggle-all"> <!-- Sélectionne toutes les tâches comme finies -->
@@ -14,7 +14,7 @@
           <div class="view">
             <label for="task">{{task.label}}</label>
             <input id="task" type="checkbox" class="toggle" [checked]="task.complete" (click)="toggleComplete(task)"/>
-            <button class="destroy"></button> <!-- Bouton permettant de supprimer une tâche -->
+            <button class="destroy" (click)="removeTask(task)"></button>
           </div>
         </li>
       </ul>

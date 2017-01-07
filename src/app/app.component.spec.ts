@@ -63,4 +63,50 @@ describe('AppComponent', () => {
       'Cocher la checkbox #task doit changer la valeur du champ \'completed\' de la tâche associée');
   }));
 
+  it('should call removeTask method', async(() => {
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    const btnDestroy = compiled.querySelector('.destroy');
+    const component = fixture.debugElement.componentInstance;
+    expect(component.removeTask).toBeDefined('La méthode removeTask doit être créée sur le composant');
+    spyOn(component, 'removeTask');
+    btnDestroy.click();
+    expect(component.removeTask).toHaveBeenCalledTimes(1);
+  }));
+
+  it('should remove task from list', async(() => {
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    const btnDestroy = compiled.querySelector('.destroy');
+    const todoList = compiled.querySelector('#todo-list');
+    const initLength = todoList.children.length;
+    btnDestroy.click();
+    fixture.detectChanges();
+    expect(todoList.children.length).toBe(initLength - 1, 'Le clic sur le bouton supprimer doit enlever un élément de la liste');
+  }));
+
+  it('should call addTask method', async(() => {
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    const todoInput = compiled.querySelector('#new-todo');
+    const component = fixture.debugElement.componentInstance;
+    expect(component.addTask).toBeDefined('La méthode addTask doit être créée sur le composant');
+    spyOn(component, 'addTask');
+    todoInput.value = 'Faire des tests';
+    todoInput.dispatchEvent(new KeyboardEvent('keyup', {key: 'enter'}));
+    expect(component.addTask).toHaveBeenCalledTimes(1);
+    expect(component.addTask).toHaveBeenCalledWith('Faire des tests');
+  }));
+
+  it('should add task to list', async(() => {
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    const todoInput = compiled.querySelector('#new-todo');
+    const todoList = compiled.querySelector('#todo-list');
+    const initLength = todoList.children.length;
+    todoInput.dispatchEvent(new KeyboardEvent('keyup', {key: 'enter'}));
+    fixture.detectChanges();
+    expect(todoList.children.length).toBe(initLength + 1, 'La touche entrée doit ajouter un élément à la liste');
+  }));
+
 });
