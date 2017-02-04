@@ -7,10 +7,10 @@
              (keyup.enter)="addTask(newTask.value)"/>
     </form>
     <section id="main">
-      <input type="checkbox" id="toggle-all"> <!-- Sélectionne toutes les tâches comme finies -->
+      <input type="checkbox" id="toggle-all" (click)="toggleAll($event)" #toggle>
       <label for="toggle-all">Tâches finies</label>
       <ul id="todo-list">
-        <li *ngFor="let task of tasks" [class.completed]="task.completed">
+        <li *ngFor="let task of tasks | taskPipe:status" [class.completed]="task.completed">
           <div class="view">
             <label for="task">{{task.label}}</label>
             <input id="task" type="checkbox" class="toggle" [checked]="task.complete" (click)="toggleComplete(task)"/>
@@ -21,6 +21,17 @@
     </section>
     <footer id="footer">
       <span id="todo-count"><strong>{{remainingTasks}} tâches restantes</strong></span>
+      <ul id="filters">
+        <li>
+          <a (click)="setStatus('ALL')" [class.selected]="status === 'ALL'">Toutes</a>
+        </li>
+        <li>
+          <a (click)="setStatus('ACTIVE')" [class.selected]="status === 'ACTIVE'">Active</a>
+        </li>
+        <li>
+          <a (click)="setStatus('COMPLETED')" [class.selected]="status === 'COMPLETED'">Complète</a>
+        </li>
+      </ul>
     </footer>
   </header>
 </section>

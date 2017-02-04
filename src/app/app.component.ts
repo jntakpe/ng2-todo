@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Task} from './task.model';
+import {Status, Task} from './task.model';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +9,8 @@ import {Task} from './task.model';
 export class AppComponent {
 
   remainingTasks = 0;
+
+  status = 'ALL';
 
   tasks: Task[] = [{
     label: 'Aller boire des bières',
@@ -31,6 +33,14 @@ export class AppComponent {
 
   addTask(label: string): void {
     this.tasks.push({label, completed: false});
+  }
+
+  toggleAll(event: Event) {
+    this.tasks.forEach(task => task.completed = event.target['checked']);
+  }
+
+  setStatus(status: Status): void {
+    this.status = status;
   }
 
 }
