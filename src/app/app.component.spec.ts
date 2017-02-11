@@ -28,14 +28,13 @@ describe('AppComponent', () => {
   it('1) should have 0 remaining tasks', async(() => {
     const component = fixture.debugElement.componentInstance;
     expect(component.remainingTasks).toBeDefined('La variable remainingTasks doit être créée');
-    expect(component.remainingTasks).toBe(0, 'La variable remainingTasks doit être initialisée à 0');
   }));
 
-  it('1) should display 0 remaining tasks', async(() => {
+  it('1) should display 3 remaining tasks', async(() => {
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('#todo-count strong').textContent).toBe('0 tâches restantes',
-      'Le nombre de tâches restantes (0) doit être affiché dans le span#todo-count');
+    expect(compiled.querySelector('#todo-count strong').textContent).toBe('2 tâches restantes',
+      'Le nombre de tâches restantes (2) doit être affiché dans le span#todo-count');
   }));
 
   it('2) should have 3 tasks', async(() => {
