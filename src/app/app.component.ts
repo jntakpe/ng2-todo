@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {Task} from './task.model';
+import { Component } from '@angular/core';
+import { Task, Status } from './task.model';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +7,8 @@ import {Task} from './task.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  status: Status = 'ALL';
 
   tasks: Task[] = [{
     label: 'Aller boire des bières',
@@ -36,4 +38,7 @@ export class AppComponent {
     return this.tasks.filter(task => !task.completed).length;
   }
 
+  setStatus(status: Status): void {
+    this.status = status;
+  }
 }

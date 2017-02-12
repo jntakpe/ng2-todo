@@ -10,9 +10,9 @@
       <input type="checkbox" id="toggle-all" (click)="toggleAll($event)">
       <label for="toggle-all">Tâches finies</label>
       <ul id="todo-list">
-        <li *ngFor="let task of tasks" [class.completed]="task.completed">
+        <li *ngFor="let task of tasks | taskStatus:status" [class.completed]="task.completed">
           <div class="view">
-            <label for="task">{{task.label}}</label>
+            <label for="task">{{task.label | uppercase}}</label>
             <input id="task" type="checkbox" class="toggle" [(ngModel)]="task.completed"/>
             <button class="destroy" (click)="removeTask(task)"></button>
           </div>
@@ -23,13 +23,13 @@
       <span id="todo-count"><strong>{{remainingTasks()}} tâches restantes</strong></span>
       <ul id="filters">
         <li>
-          <a>Toutes</a>
+          <a (click)="setStatus('ALL')" [ngClass]="{selected: status === 'ALL'}">Toutes</a>
         </li>
         <li>
-          <a>Active</a>
+          <a (click)="setStatus('ACTIVE')" [ngClass]="{selected: status === 'ACTIVE'}">Active</a>
         </li>
         <li>
-          <a>Complète</a>
+          <a (click)="setStatus('COMPLETED')" [ngClass]="{selected: status === 'COMPLETED'}">Complète</a>
         </li>
       </ul>
     </footer>
