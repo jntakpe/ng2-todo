@@ -1,6 +1,6 @@
-import {Ng2TodoPage} from './app.po';
+import { Ng2TodoPage } from './app.po';
 
-describe('ng2-todo App', function () {
+describe('ng2-todo App', () => {
   let page: Ng2TodoPage;
 
   beforeEach(() => {
