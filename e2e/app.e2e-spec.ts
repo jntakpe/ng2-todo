@@ -1,10 +1,10 @@
-import { Ng2TodoPage } from './app.po';
+import { Ng4TodoJocPage } from './app.po';
 
-describe('ng2-todo App', () => {
-  let page: Ng2TodoPage;
+describe('ng4-todo-joc App', () => {
+  let page: Ng4TodoJocPage;
 
   beforeEach(() => {
-    page = new Ng2TodoPage();
+    page = new Ng4TodoJocPage();
   });
 
   it('should display message saying app works', () => {
