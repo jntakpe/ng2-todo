@@ -1,14 +1,14 @@
-import { Ng4TodoJocPage } from './app.po';
+import {NgTodoPage} from './app.po';
 
-describe('ng4-todo-joc App', () => {
-  let page: Ng4TodoJocPage;
+describe('ng-todo App', () => {
+  let page: NgTodoPage;
 
   beforeEach(() => {
-    page = new Ng4TodoJocPage();
+    page = new NgTodoPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getParagraphText()).toEqual('Todo APP');
   });
 });
