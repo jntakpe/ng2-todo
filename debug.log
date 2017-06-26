@@ -1,0 +1,1 @@
+[0626/212855.610:ERROR:file_io_win.cc(182)] CreateFile C:\Users\gauth\AppData\Local\Temp\scoped_dir15976_1053\Crashpad\settings.dat: The process cannot access the file because it is being used by another process. (0x20)
