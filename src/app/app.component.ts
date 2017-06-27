@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Task, Status } from './task.model';
+import {Component} from '@angular/core';
+import {Task, Status} from './task.model';
 
 @Component({
   selector: 'app-root',
@@ -38,7 +38,27 @@ export class AppComponent {
     return this.tasks.filter(task => !task.completed).length;
   }
 
-  setStatus(status: Status): void {
-    this.status = status;
+  isStatusALL() {
+    return this.status === 'ALL';
+  }
+
+  setStatusALL(): void {
+    this.status = 'ALL';
+  }
+
+  setStatusCOMPLETED(): void {
+    this.status = 'COMPLETED';
+  }
+
+  isStatusCOMPLETED(): boolean {
+    return this.status === 'COMPLETED';
+  }
+
+  setStatusACTIVE(): void {
+    this.status = 'ACTIVE';
+  }
+
+  isStatusACTIVE(): boolean {
+    return this.status === 'ACTIVE';
   }
 }

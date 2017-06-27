@@ -23,13 +23,13 @@
       <span id="todo-count"><strong>{{remainingTasks()}} tâches restantes</strong></span>
       <ul id="filters">
         <li>
-          <a (click)="setStatus('ALL')" [ngClass]="{selected: status === 'ALL'}">Toutes</a>
+          <a (click)="setStatusALL()" [ngClass]="{selected: isStatusALL()}">Toutes</a>
         </li>
         <li>
-          <a (click)="setStatus('ACTIVE')" [ngClass]="{selected: status === 'ACTIVE'}">Active</a>
+          <a (click)="setStatusACTIVE()" [ngClass]="{selected: isStatusACTIVE()}">Active</a>
         </li>
         <li>
-          <a (click)="setStatus('COMPLETED')" [ngClass]="{selected: status === 'COMPLETED'}">Complète</a>
+          <a (click)="setStatusCOMPLETED()" [ngClass]="{selected: isStatusCOMPLETED()}">Complète</a>
         </li>
       </ul>
     </footer>
